@@ -159,12 +159,6 @@ PlasmoidItem {
             return
         }
 
-        var trackedLower = []
-        for (var i = 0; i < trackedNames.length; ++i) {
-            if (trackedNames[i])
-                trackedLower.push(String(trackedNames[i]).toLowerCase())
-        }
-
         var matchMap = {}   // name -> entry
 
         for (var s = 0; s < data.servers.length; ++s) {
@@ -183,9 +177,8 @@ PlasmoidItem {
                     continue
 
                 var name = String(client.name)
-                var nameLower = name.toLowerCase()
 
-                if (trackedLower.indexOf(nameLower) !== -1) {
+                if (trackedNames.indexOf(name) !== -1) {
                     matchMap[name] = {
                         name: name,
                         serverName: serverName,
